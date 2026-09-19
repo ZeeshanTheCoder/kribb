@@ -58,7 +58,6 @@ export default function SignUp() {
     }
 
   }
-  
 
   if (
     isVerifying &&

@@ -107,7 +107,6 @@ export default function SignIn() {
           className="w-32 h-16 mb-8"
           resizeMode="contain"
         />
-        
 
         <Text className="text-gray-800 mb-2 text-3xl font-bold">
           Verify your account
