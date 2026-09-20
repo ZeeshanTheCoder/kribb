@@ -17,6 +17,7 @@ export default function Index() {
   const [recommended, setRecommended] = React.useState<Property[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
 
+
   const fetchProperties = async () => {
     try {
       setLoading(true);
@@ -62,7 +63,10 @@ export default function Index() {
 
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-50">
+    <SafeAreaView
+      className="flex-1 bg-gray-50"
+      edges={["top", "left", "right"]}
+    >
       <FlatList
         data={recommended}
         keyExtractor={(item) => item.id}

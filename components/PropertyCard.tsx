@@ -1,3 +1,4 @@
+import useSavedProperty from '@/hooks/useSavedProperty';
 import { formatPrice } from '@/lib/utils';
 import { Property } from '@/types';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,7 +17,7 @@ export default function PropertyCard({
 }) {
     const router = useRouter();
 
-    const isSaved = true;
+    const { isSaved, saveLoading, toggleSave } = useSavedProperty(property.id, onUnsave);
 
     return (
         <TouchableOpacity
@@ -33,17 +34,14 @@ export default function PropertyCard({
         >
 
             <Image
-                source={{ uri: property.images[0] }}
+                source={{ uri: property.images.length > 0 ? (property.images[0]) : require('@/assets/images/kribb.png') }}
                 className="w-28 h-28"
                 resizeMode='cover'
             />
 
             <View className="flex-1 p-3 justify-between">
                 <View>
-                    <Text
-                        className="text-sm font-bold text-gray-800 mb-1"
-                        numberOfLines={1}
-                    >
+                    <Text className="text-sm font-bold text-gray-800 mb-1" numberOfLines={1} >
                         {property.title}
                     </Text>
 
@@ -84,7 +82,11 @@ export default function PropertyCard({
             </View>
 
 
-            <TouchableOpacity className="w-10 items-center pt-3">
+            <TouchableOpacity 
+            className="w-10 items-center pt-3"
+             onPress={toggleSave}
+             disabled={saveLoading}
+             >
                 <Ionicons
                     name={isSaved ? "heart" : "heart-outline"}
                     size={18}
