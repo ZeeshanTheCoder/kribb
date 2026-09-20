@@ -11,6 +11,7 @@ import {
   View,
 } from "react-native";
 
+
 export default function SignIn() {
   const { signIn, errors, fetchStatus } = useSignIn();
 
@@ -39,7 +40,7 @@ export default function SignIn() {
       await signIn.finalize({
         navigate: ({ session, decorateUrl }) => {
           if (session?.currentTask) {
-            console.log(session.currentTask);
+            console.log(session?.currentTask);
             return;
           }
 
@@ -87,7 +88,7 @@ export default function SignIn() {
       await signIn.finalize({
         navigate: ({ session, decorateUrl }) => {
           if (session?.currentTask) {
-            console.log(session.currentTask);
+            console.log(session?.currentTask);
             return;
           }
 
@@ -99,7 +100,7 @@ export default function SignIn() {
   };
 
   // Verification screen
-  if (isVerifying && signIn.status === "needs_client_trust") {
+  if (isVerifying && signIn?.status === "needs_client_trust") {
     return (
       <View className="flex-1 justify-center px-6 py-12 bg-white">
         <Image
@@ -125,7 +126,7 @@ export default function SignIn() {
           keyboardType="number-pad"
         />
 
-        {errors.fields.code && (
+        {errors?.fields?.code && (
           <Text className="text-red-500 mb-4">
             {errors.fields.code.message}
           </Text>
