@@ -27,7 +27,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { WebView } from "react-native-webview";
 
 const { width } = Dimensions.get("window");
-const ADMIN_PHONE = "919999999999"; // replace with your WhatsApp number
+const ADMIN_PHONE = process.env.EXPO_PUBLIC_ADMIN_PHONE
 
 export default function PropertyDetailScreen() {
     const { id } = useLocalSearchParams<{ id: string }>();
